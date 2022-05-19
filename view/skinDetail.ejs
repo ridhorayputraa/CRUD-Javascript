@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero detail</title>
+
+    <style>
+        body{
+           
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        input{
+            border-radius: 10px;
+        }
+h1{
+    margin-bottom: 30px;
+}
+        .container{
+            margin-top: 30px;
+            max-width: 1280px;
+        }
+    </style>
+
+
+</head>
+<body>
+   
+<div class="container">
+    <h1><%=skin.title%> </h1>
+ <form action="/skin/update" method="post">
+    <input type="text" name="id" hidden value="<%= skin.data[0].id %>"> 
+     <input type="text" name="nama" value="<%= skin.data[0].nama %>">
+     <input type="text" name="role" value="<%= skin.data[0].role %>">
+     <input type="text" name="price" value="<%= skin.data[0].price %>">
+     <input type="text" name="skin" value="<%= skin.data[0].skin %>">
+     <button type="submit" Onclick="alert('Skin terupdate!')"  >Update!</button>
+ </form>
+</div>
+
+</body>
+</html>

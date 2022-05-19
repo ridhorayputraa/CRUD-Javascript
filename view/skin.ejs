@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKIN LIST</title>
+
+
+
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        height: 100% ;
+        background-color: aquamarine;
+
+        
+    }
+
+h1{
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.content-table{
+    font-family: sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0,0, 0.15);
+}
+
+
+
+.content-table thead tr{
+    background-color: rgb(25, 165, 252);
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+
+.content-table th,
+.content-table td{
+    padding: 12px 15px;
+}
+
+
+.content-table tbody tr{
+    border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even){
+    background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type{
+    border-bottom: 2px solid  rgba(25, 165, 252, 0.7) ;
+}
+
+.form-plus input{
+   
+    padding: 5px 20px;
+    font-family: sans-serif;
+    text-align: center;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+   }
+.form-plus{
+    margin-top: 40px;
+     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+   justify-content: center;
+}
+
+
+.hayu{
+    text-align: center;
+font-family: sans-serif;
+}
+
+.btn-plus{
+
+  box-sizing: border-box;
+  background-color: #61dafb;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 12px 24px;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px 0px black;
+  color: rgb(36, 33, 33);
+}
+
+.btn-plus:active{
+    position: relative;
+    top: 4px;
+    left: 9px;
+    box-shadow: none;
+}
+
+.btn-plus:hover{
+    opacity: 0.8;
+}
+
+
+
+td a{
+    background-color:#61dafb ;
+    padding: 3px 5px;
+    text-decoration: none;
+    color: black;
+    border-radius: 10px;
+    font-weight: bold;
+    color: rgb(36, 33, 33);
+}
+
+td a:hover{
+    opacity: 0.8;
+}
+
+.btn-delt{
+    padding: 2px 5px; margin-left: 5px; border-radius: 10px; border: none; font-weight: bold; color:black; background:red; cursor:pointer
+}
+
+.btn-delt:hover{
+    opacity: 0.8;
+}
+
+
+</style>
+
+</head>
+<body>
+    <div class="content-wrapper">
+ <div class="container">
+    <h1 class="title"><%= skins.title %></h1>
+
+    <table  class="content-table"  >
+       <thead>
+        <tr>
+           <th>Id</th>
+           <th>Name</th>
+           <th>Role</th>
+           <th>Price</th>
+           <th>Skin</th>
+           <th>Action</th>
+       </tr>
+    </thead>
+    <tbody>
+       <% for (let skin = 0; skin < skins.data.length; skin++) {%>
+       
+        <tr>
+           <td><%= skin+1 %>
+           </td>
+           <td ><%= skins.data[skin].nama %>
+           </td>
+            <td><%= skins.data[skin].role  %> 
+            </td>
+            <td><%=  skins.data[skin].price %>  </td>
+           <td>
+               <%= skins.data[skin].skin %>
+           </td>
+           <form action="/skin/remove" method="post" >
+           <td>
+               <a href="/skin/<%= skins.data[skin].id %>">Edit</a>
+
+                   <input type="text" hidden name="id" value="<%= skins.data[skin].id %>"/>
+                   <button type="submit" class="btn-delt"  onclick="return confirm('apakah yakin data ini dihapus?')" >Hapus</button>
+               </form>
+
+                  
+               
+           </td>
+
+           
+                       
+     <%  } %>
+     </tr>
+    </tbody>
+   </table>    
+
+
+
+   <h1  class="form-plus" >Tambahkan Hero dan Skin</h1>
+   <form class="hayu" action="/skin/add" method="post"> 
+<div class="form-plus">
+        <input type="text" name="nama" type="hidden"  placeholder="Nama Hero" />
+        <input type="text" name="role"  type="hidden" placeholder="Role Hero" />
+        <input type="text" name="Price" type="hidden"  placeholder="Price"/>
+        <input type="text" name="skin"  type="hidden" placeholder="skin"/>
+    </div>
+        <br>
+        <br>
+        <button type="submit" class="btn-plus"  onclick="return alert('data di Tambahkan')"  ><span>+</span> Tambahkan</button>
+    </form>
+</div>
+</div>
+    <a href="hero"><span>🚗🚗</span> klik untuk pindah ke table Hero</a>
+</body>
+</html>
